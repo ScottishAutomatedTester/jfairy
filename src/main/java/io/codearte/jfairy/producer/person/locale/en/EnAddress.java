@@ -7,15 +7,15 @@ import static org.apache.commons.lang3.SystemUtils.LINE_SEPARATOR;
 
 public class EnAddress implements Address {
 
-	private final String streetNumber;
+	private String streetNumber;
 
-	private final String street;
+	private String street;
 
-	private final String apartmentNumber;
+	private String apartmentNumber;
 
-	private final String city;
+	private String city;
 
-	private final String postalCode;
+	private String postalCode;
 
 	public EnAddress(String streetNumber, String street, String apartmentNumber, String city, String postalCode) {
 		this.streetNumber = streetNumber;
@@ -52,6 +52,31 @@ public class EnAddress implements Address {
 
 	public String getAddressLine2() {
 		return city + " " + postalCode;
+	}
+
+	@Override
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	@Override
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	@Override
+	public void setApartmentNumber(String apartmentNumber) {
+		this.apartmentNumber = apartmentNumber;
+	}
+
+	@Override
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@Override
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	@Override
