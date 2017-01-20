@@ -20,7 +20,7 @@ import static org.apache.commons.lang3.StringUtils.stripAccents;
 
 public class PersonProvider implements Provider<Person> {
 
-	static final int MIN_AGE = 1;
+	static final int MIN_AGE = 16;
 	static final int MAX_AGE = 100;
 	@VisibleForTesting
 	static final String FIRST_NAME = "firstNames";
