@@ -22,7 +22,7 @@ import java.util.Random;
  * <li><tt>locale</tt>: Specifies the locale for the random data file.</li>
  * <li><tt>filePrefix</tt>: Specifies the file prefix.
  * (So if you specify "jfairy" here and English for Locale, the data file will be
- * "jfairy_en.yml" under the classpath.)
+ * "jfairy_en_US.yml" under the classpath.)
  * </li>
  * <li><tt>random</tt>: The Random object to use.</li>
  * <li><tt>randomSeed</tt>: A specific random seed to use. Use this if you want the resulting
@@ -59,7 +59,7 @@ public class Bootstrap {
 	private static void fillDefaultDataMaster(MapBasedDataMaster dataMaster, Locale locale, String filePrefix) {
 		try {
 			dataMaster.readResources(filePrefix + ".yml");
-			dataMaster.readResources(filePrefix + "_" + locale.getLanguage() + ".yml");
+			dataMaster.readResources(filePrefix + "_" + locale.toString() + ".yml");
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
@@ -117,16 +117,8 @@ public class Bootstrap {
 	private static FairyModule getFairyModuleForLocale(DataMaster dataMaster, Locale locale, Random random) {
 		LanguageCode code = LanguageCode.valueOf(locale.getLanguage().toUpperCase());
 		switch (code) {
-			case PL:
-				return new PlFairyModule(dataMaster, random);
 			case EN:
 				return new EnFairyModule(dataMaster, random);
-			case ES:
-				return new EsFairyModule(dataMaster, random);
-			case FR:
-				return new EsFairyModule(dataMaster, random);
-			case SV:
-				return new SvFairyModule(dataMaster, random);
 			default:
 				LOG.info("No data for your language - using EN");
 				return new EnFairyModule(dataMaster, random);
