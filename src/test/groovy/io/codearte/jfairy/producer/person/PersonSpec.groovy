@@ -91,7 +91,7 @@ class PersonSpec extends Specification {
 
 	def "should create person younger than 3 years"() {
 		when:
-			Person person = fairy.person(maxAge(3))
+			Person person = fairy.person(minAge(1), maxAge(3))
 		then:
 			person.age <= 3
 	}
