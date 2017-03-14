@@ -7,30 +7,9 @@ import io.codearte.jfairy.producer.person.locale.en.EnAddress
 import org.apache.commons.validator.routines.EmailValidator
 import org.joda.time.DateTime
 import org.joda.time.Period
-import spock.lang.Ignore
 import spock.lang.Specification
 
-import static io.codearte.jfairy.producer.person.PersonProperties.ageBetween
-import static io.codearte.jfairy.producer.person.PersonProperties.female
-import static io.codearte.jfairy.producer.person.PersonProperties.male
-import static io.codearte.jfairy.producer.person.PersonProperties.maxAge
-import static io.codearte.jfairy.producer.person.PersonProperties.minAge
-import static io.codearte.jfairy.producer.person.PersonProperties.telephoneFormat
-import static io.codearte.jfairy.producer.person.PersonProperties.withAddress
-import static io.codearte.jfairy.producer.person.PersonProperties.withAge
-import static io.codearte.jfairy.producer.person.PersonProperties.withCompany
-import static io.codearte.jfairy.producer.person.PersonProperties.withCompanyEmail
-import static io.codearte.jfairy.producer.person.PersonProperties.withDateOfBirth
-import static io.codearte.jfairy.producer.person.PersonProperties.withEmail
-import static io.codearte.jfairy.producer.person.PersonProperties.withFirstName
-import static io.codearte.jfairy.producer.person.PersonProperties.withLastName
-import static io.codearte.jfairy.producer.person.PersonProperties.withMiddleName
-import static io.codearte.jfairy.producer.person.PersonProperties.withNationalIdentificationNumber
-import static io.codearte.jfairy.producer.person.PersonProperties.withNationalIdentityCardNumber
-import static io.codearte.jfairy.producer.person.PersonProperties.withPassportNumber
-import static io.codearte.jfairy.producer.person.PersonProperties.withPassword
-import static io.codearte.jfairy.producer.person.PersonProperties.withTelephoneNumber
-import static io.codearte.jfairy.producer.person.PersonProperties.withUsername
+import static io.codearte.jfairy.producer.person.PersonProperties.*
 
 class PersonSpec extends Specification {
 
@@ -119,18 +98,33 @@ class PersonSpec extends Specification {
 			period.years == 32
 	}
 
-	def "should create telephone number"() {
+	def "should create mobile telephone number"() {
 		when:
 			Person person = fairy.person()
 		then:
-			person.telephoneNumber
+			person.mobileTelephoneNumber
 	}
 
-	def "should create telephone number in defined format"() {
+	def "should create home telephone number"() {
 		when:
-			Person person = fairy.person(telephoneFormat("###--###"))
+		Person person = fairy.person()
 		then:
-			person.telephoneNumber ==~ /\d\d\d--\d\d\d/
+		person.homeTelephoneNumber
+	}
+
+	def "should create mobile telephone number in defined format"() {
+		when:
+		Person person = fairy.person(mobileTelephoneFormat("###--###"))
+		then:
+		person.mobileTelephoneNumber ==~ /\d\d\d--\d\d\d/
+
+	}
+
+	def "should create home telephone number in defined format"() {
+		when:
+		Person person = fairy.person(homeTelephoneFormat("###--###"))
+		then:
+		person.homeTelephoneNumber ==~ /\d\d\d--\d\d\d/
 	}
 
 	def "should create birth date"() {
@@ -265,16 +259,23 @@ class PersonSpec extends Specification {
 
 	def "withTelephoneNumber should create person with specific telephoneNumber"() {
 		when:
-			Person person = fairy.person(withTelephoneNumber("01234556789"))
+			Person person = fairy.person(withMobileTelephoneNumber("01234556789"))
 		then:
-			person.telephoneNumber == "01234556789"
+			person.mobileTelephoneNumber == "01234556789"
 	}
 
-	def "withTelephoneNumberFormat and telephoneFormat used together should create person with specific telephoneNumber"() {
+	def "withMobileTelephoneNumberFormat and telephoneFormat used together should create person with specific telephoneNumber"() {
 		when:
-			Person person = fairy.person(telephoneFormat("###--###"), withTelephoneNumber("01234556789"))
+			Person person = fairy.person(mobileTelephoneFormat("###--###"), withMobileTelephoneNumber("07450949288"))
 		then:
-			person.telephoneNumber == "01234556789"
+			person.mobileTelephoneNumber == "07450949288"
+	}
+
+	def "withHomeTelephoneNumberFormat and telephoneFormat used together should create person with specific telephoneNumber"() {
+		when:
+		Person person = fairy.person(homeTelephoneFormat("###--###"), withHomeTelephoneNumber("01234556789"))
+		then:
+		person.homeTelephoneNumber == "01234556789"
 	}
 
 	def "withDateOfBirth should create person with specific date of birth"() {

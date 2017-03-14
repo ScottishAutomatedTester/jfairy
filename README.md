@@ -56,6 +56,14 @@ Fairy plFairy = Fairy.create(Locale.forLanguageTag("pl"));
 // Polish version
 ```
 
+## Deploying to PPL Nexus
+1. Run ```./gradlew install```
+2. cd ```build/libs```
+3. run ```curl --fail -u nexusUserName:Pwd --upload-file jfairy-0.5.4-SNAPSHOT.jar 'http://nexus.uk.novamedia.com:8081/nexus/content/repositories/snapshots/io/codearte/jfairy/0.5.4-SNAPSHOT/'```## Deploying to PPL Nexus
+                                                                                                                                                                                                  1. Run ```./gradlew install```
+                                                                                                                                                                                                  2. cd ```build/libs```
+                                                                                                                                                                                                  3. run ```curl --fail -u nexusUserName:Pwd --upload-file jfairy-0.5.4-SNAPSHOT.jar 'http://nexus.uk.novamedia.com:8081/nexus/content/repositories/snapshots/io/codearte/jfairy/0.5.4-SNAPSHOT/'```
+
 ## Other samples
 
 Look into [code samples](https://github.com/Codearte/fairyland/tree/master/src/test/groovy/snippets/)

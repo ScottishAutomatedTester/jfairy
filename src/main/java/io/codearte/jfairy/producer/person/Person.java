@@ -20,7 +20,8 @@ public class Person {
 	private final String username;
 	private final String password;
 	private final Sex sex;
-	private final String telephoneNumber;
+	private final String mobileTelephoneNumber;
+	private final String homeTelephoneNumber;
 	private final DateTime dateOfBirth;
 	private final Integer age;
 	private final Company company;
@@ -30,7 +31,7 @@ public class Person {
 	private final String passportNumber;
 
 	public Person(String firstName, String middleName, String lastName, Address address, String email, String username,
-				  String password, Sex sex, String telephoneNumber, DateTime dateOfBirth, Integer age,
+				  String password, Sex sex, String mobileTelephoneNumber, String homeTelephoneNumber, DateTime dateOfBirth, Integer age,
 				  String nationalIdentityCardNumber, String nationalIdentificationNumber, String passportNumber, Company company, String companyEmail) {
 		this.nationalIdentityCardNumber = nationalIdentityCardNumber;
 		this.address = address;
@@ -41,7 +42,8 @@ public class Person {
 		this.username = username;
 		this.password = password;
 		this.sex = sex;
-		this.telephoneNumber = telephoneNumber;
+		this.mobileTelephoneNumber = mobileTelephoneNumber;
+		this.homeTelephoneNumber = homeTelephoneNumber;
 		this.dateOfBirth = dateOfBirth;
 		this.age = age;
 		this.nationalIdentificationNumber = nationalIdentificationNumber;
@@ -94,9 +96,11 @@ public class Person {
 		return sex;
 	}
 
-	public String getTelephoneNumber() {
-		return telephoneNumber;
+	public String getMobileTelephoneNumber() {
+		return mobileTelephoneNumber;
 	}
+
+	public String getHomeTelephoneNumber() { return homeTelephoneNumber; }
 
 	public DateTime getDateOfBirth() {
 		return dateOfBirth;

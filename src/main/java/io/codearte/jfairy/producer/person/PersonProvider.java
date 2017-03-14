@@ -29,10 +29,14 @@ public class PersonProvider implements Provider<Person> {
 	@VisibleForTesting
 	static final String PERSONAL_EMAIL = "personalEmails";
 	@VisibleForTesting
-	static final String TELEPHONE_NUMBER_FORMATS = "telephone_number_formats";
+	static final String MOBILE_TELEPHONE_NUMBER_FORMATS = "mobile_telephone_number_formats";
+	@VisibleForTesting
+	static final String HOME_TELEPHONE_NUMBER_FORMATS = "home_telephone_number_formats";
+
 
 	private Person.Sex sex;
 	private String telephoneNumberFormat;
+	private String homeTelephoneNumberFormat;
 	private Integer age;
 	private DateTime dateOfBirth;
 	private Company company;
@@ -42,7 +46,8 @@ public class PersonProvider implements Provider<Person> {
 	private String lastName;
 	private String email;
 	private String username;
-	private String telephoneNumber;
+	private String mobileTelephoneNumber;
+	private String homeTelephoneNumber;
 	private String password;
 	private String companyEmail;
 	private String nationalIdentityCardNumber;
@@ -96,7 +101,8 @@ public class PersonProvider implements Provider<Person> {
 		generateLastName();
 		generateEmail();
 		generateUsername();
-		generateTelephoneNumber();
+		generateMobileTelephoneNumber();
+		generateHomeTelephoneNumber();
 		generateAge();
 		generateDateOfBirth();
 		generateCompanyEmail();
@@ -107,7 +113,7 @@ public class PersonProvider implements Provider<Person> {
 		generateAddress();
 
 		return new Person(firstName, middleName, lastName, address, email,
-				username, password, sex, telephoneNumber, dateOfBirth, age,
+				username, password, sex, mobileTelephoneNumber, homeTelephoneNumber, dateOfBirth, age,
 				nationalIdentityCardNumber, nationalIdentificationNumber, passportNumber,
 				company, companyEmail);
 	}
@@ -166,14 +172,24 @@ public class PersonProvider implements Provider<Person> {
 		}
 	}
 
-	private void generateTelephoneNumber() {
-		if (telephoneNumber != null) {
+	private void generateMobileTelephoneNumber() {
+		if (mobileTelephoneNumber != null) {
 			return;
 		}
 		if (telephoneNumberFormat == null) {
-			telephoneNumberFormat = dataMaster.getRandomValue(TELEPHONE_NUMBER_FORMATS);
+			telephoneNumberFormat = dataMaster.getRandomValue(MOBILE_TELEPHONE_NUMBER_FORMATS);
 		}
-		telephoneNumber = baseProducer.numerify(telephoneNumberFormat);
+		mobileTelephoneNumber = baseProducer.numerify(telephoneNumberFormat);
+	}
+
+	private void generateHomeTelephoneNumber() {
+		if (homeTelephoneNumber != null) {
+			return;
+		}
+		if (homeTelephoneNumberFormat == null) {
+			homeTelephoneNumberFormat = dataMaster.getRandomValue(HOME_TELEPHONE_NUMBER_FORMATS);
+		}
+		homeTelephoneNumber = baseProducer.numerify(homeTelephoneNumberFormat);
 	}
 
 	private void generateAge() {
@@ -242,8 +258,12 @@ public class PersonProvider implements Provider<Person> {
 		passportNumber = passportNumberProvider.get();
 	}
 
-	public void setTelephoneNumberFormat(String telephoneFormat) {
+	public void setMobileTelephoneNumberFormat(String telephoneFormat) {
 		telephoneNumberFormat = telephoneFormat;
+	}
+
+	public void setHomeTelephoneNumberFormat(String telephoneNumberFormat) {
+		homeTelephoneNumberFormat = telephoneNumberFormat;
 	}
 
 	public void setSex(Person.Sex sex) {
@@ -278,9 +298,9 @@ public class PersonProvider implements Provider<Person> {
 		this.username = username;
 	}
 
-	public void setTelephoneNumber(String telephoneNumber) {
-		this.telephoneNumber = telephoneNumber;
-	}
+	public void setMobileTelephoneNumber(String telephoneNumber) { this.mobileTelephoneNumber = telephoneNumber; }
+
+	public void setHomeTelephoneNumber(String telephoneNumber) { this.homeTelephoneNumber = telephoneNumber; }
 
 	public void setDateOfBirth(DateTime dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;

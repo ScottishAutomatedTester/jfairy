@@ -63,11 +63,20 @@ public final class PersonProperties {
 		return ageBetween(minimumAge.or(PersonProvider.MIN_AGE), maxAge);
 	}
 
-	public static PersonProperty telephoneFormat(final String telephoneFormat) {
+	public static PersonProperty mobileTelephoneFormat(final String telephoneFormat) {
 		return new PersonProperty() {
 			@Override
 			public void apply(PersonProvider person, BaseProducer baseProducer) {
-				person.setTelephoneNumberFormat(telephoneFormat);
+				person.setMobileTelephoneNumberFormat(telephoneFormat);
+			}
+		};
+	}
+
+	public static PersonProperty homeTelephoneFormat(final String telephoneFormat) {
+		return new PersonProperty() {
+			@Override
+			public void apply(PersonProvider person, BaseProducer baseProducer) {
+				person.setHomeTelephoneNumberFormat(telephoneFormat);
 			}
 		};
 	}
@@ -135,11 +144,20 @@ public final class PersonProperties {
 		};
 	}
 
-	public static PersonProperty withTelephoneNumber(final String telephoneNumber) {
+	public static PersonProperty withMobileTelephoneNumber(final String telephoneNumber) {
 		return new PersonProperty() {
 			@Override
 			public void apply(PersonProvider personProvider, BaseProducer baseProducer) {
-				personProvider.setTelephoneNumber(telephoneNumber);
+				personProvider.setMobileTelephoneNumber(telephoneNumber);
+			}
+		};
+	}
+
+	public static PersonProperty withHomeTelephoneNumber(final String telephoneNumber) {
+		return new PersonProperty() {
+			@Override
+			public void apply(PersonProvider personProvider, BaseProducer baseProducer) {
+				personProvider.setHomeTelephoneNumber(telephoneNumber);
 			}
 		};
 	}

@@ -16,7 +16,8 @@ data:
 
   text: Men jag måste förklara för dig hur allt detta felaktiga uppfattningen att säga upp av ett nöje och prisa smärta föddes och jag kommer att ge dig en fullständig redogörelse av systemet, och förklara de faktiska lärdomarna stora utforskare  av sanningen, byggmästaren av mänsklig lycka. Ingen avvisar, ogillar eller undviker nöje i sig, eftersom det är glädje, men eftersom de som inte vet hur man ska lyckas nöje rationellt möter konsekvenser som är oerhört smärtsamt. Inte heller är det någon som älskar eller bedriver eller önskar att få smärtan i sig självt, eftersom det är smärta, men ibland uppstår omständigheter som ur strävan och smärtan kan försäkra honom ett sant nöje. För att ta ett trivialt exempel, som av oss någonsin hård fysisk träning, förutom att få någon fördel av det? Men vem har rätt att hitta fel med en man som väljer att njuta av ett nöje som inte har några störande konsekvenser, eller en som undviker en smärta som inte resulterar  i tillfredsställelse?
 
-  telephone_number_formats: ['070-### ## ##', '072-### ## ##', '073-### ## ##', '076-### ## ##', '079-### ## ##', '08-### ### ##', '08-### ## ##', '08-## ## ##', '0###-## ## ##', '0##-### ## ##', '0##-## ## ##']
+  mobile_telephone_number_formats: ['070-### ## ##', '072-### ## ##', '073-### ## ##', '076-### ## ##', '079-### ## ##', '08-### ### ##', '08-### ## ##', '08-## ## ##', '0###-## ## ##', '0##-### ## ##', '0##-## ## ##']
+  home_telephone_number_formats: ['070-### ## ##', '072-### ## ##', '073-### ## ##', '076-### ## ##', '079-### ## ##', '08-### ### ##', '08-### ## ##', '08-## ## ##', '0###-## ## ##', '0##-### ## ##', '0##-## ## ##']
 
   postal_code: ['### ##']
 

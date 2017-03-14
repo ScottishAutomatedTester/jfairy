@@ -1,5 +1,11 @@
 # jFairy - developers guide
 
+
+## Deploying to PPL Nexus
+1. Run ```./gradlew install```
+2. cd ```build/libs```
+3. run ```curl --fail -u nexusUserName:Pwd --upload-file jfairy-0.5.4-SNAPSHOT.jar 'http://nexus.uk.novamedia.com:8081/nexus/content/repositories/snapshots/io/codearte/jfairy/0.5.4-SNAPSHOT/'```
+
 ## Releasing the new version
 
 Until the [Gradle release plugin](https://github.com/townsfolk/gradle-release/) (or something similar) is used
